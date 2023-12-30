@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Document</title>
 </head>
+
 <body>
     <form action="#" method="#">
-        <input type="text" placeholder="Enter Username"> <br>
-        <input type="password" placeholder="Enter Password"> <br>
+        <fieldset>
+            <legend>Professional Details</legend>
+
+            <input type="text" placeholder="Enter Username"> <br>
+            <input type="password" placeholder="Enter Password"> <br>
 
 
-        <!-- Radio -->
-        <div>Select Your Language?</div>
-        <input type="radio" name="language"> C++ 
-        <input type="radio" name="language"> Java <br>
-        <input type="radio" name="language"> Python 
-        <input type="radio" name="language"> Kotlin
+            <!-- Radio -->
+            <div>Select Your Language?</div>
+            <input type="radio" name="language"> C++
+            <input type="radio" name="language"> Java <br>
+            <input type="radio" name="language"> Python
+            <input type="radio" name="language"> Kotlin
 
-        <!-- CheckBox -->
-        <div>Select Skills?</div>
-        <input type="checkbox" name="skill" id="dance"> 
-        <label for="dance">Dance</label>
+            <!-- CheckBox -->
+            <div>Select Skills?</div>
+            <input type="checkbox" name="skill" id="dance">
+            <label for="dance">Dance</label>
 
-        <input type="checkbox" name="skill" id="sing">  
-        <label for="sing">Sing</label>
+            <input type="checkbox" name="skill" id="sing">
+            <label for="sing">Sing</label>
+            <br>
+            <input type="checkbox" name="skill" id="cook"> Cook
+            <label for="cook">Sing</label>
+
+            <input type="checkbox" name="skill" id="swim">
+            <label for="swim">Swim</label>
+        </fieldset>
+
         <br>
-        <input type="checkbox" name="skill" id="cook"> Cook
-        <label for="cook">Sing</label>
-
-        <input type="checkbox" name="skill" id="swim"> 
-        <label for="swim">Swim</label>
-
-        <br>
         <br>
 
-        <!-- TEXT AREA -->
-        <div>Tell About Yourself?</div>
-        <textarea name="about" cols="30" rows="5" placeholder="">Briefly Write About Yourself</textarea>
-        <br>
+        <fieldset>
+            <legend>Personal Details</legend>
+            <div>GENDER?</div>
+            <select>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Others</option>
+            </select>
+
+            <!-- TEXT AREA -->
+            <div>Tell About Yourself?</div>
+            <textarea name="about" cols="30" rows="5" placeholder="">Briefly Write About Yourself</textarea>
+            <br>
+        </fieldset>
         <button type="submit">Signin</button>
     </form>
 </body>
+
 </html>

@@ -1,0 +1,68 @@
+/* *{
+    font-family: sans-serif;
+}
+
+p{
+    color: green;
+}
+
+#para{
+    color: yellow;
+    background-color: green;
+    font-size: 12px;
+}
+
+.para{
+    color: white;
+    background-color: black;
+}
+
+.para{
+    color: blue;
+    background-color: orange;
+} */
+
+/* DESCENDANT SELECTOR: elementSelector secondElementSelector */
+/* div{
+    color: orange;
+}
+span div{
+    color: purple;
+}
+span div span{
+    color: blue;
+    background-color: orange;
+} */
+
+/* COMBINATORS */
+/* 1. DIRECT CHILD: '>' */
+/* ul>li{
+    color: orange;
+} */
+/* 2. Immediate Sibling: '+' */
+/* li+li{
+    color: orange;
+} */
+
+/* 3. General Sibling: '~' */
+/* li~li{
+    color: orange;
+} */
+
+/* STRUCTURAL PSUEDOCLASS */
+/* li:first-child{
+    color: orange;
+}
+
+li:last-child{
+    color: green;
+} */
+
+/* li:nth-child(an+b){} */
+li:nth-child(2n+2){
+    color: magenta;
+}
+
+li:nth-child(2n+1){
+    color: orange;
+}
