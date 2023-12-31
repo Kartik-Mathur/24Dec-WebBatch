@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Floats</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* First thing to prevent parent from collapse */
+        .div::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* Second thing to prevent parent from collapse */
+        .clearfix {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <div class="img"></div>
+        <div class="text"></div>
+        <!-- <div class="clearfix"></div> -->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+.div{
+    border: 1px solid red;
+}
+
+.img{
+    border: 1px solid green;
+    width: 30%;
+    height: 50px;
+    float: left;
+}
+
+.text{
+    border: 1px solid orange;
+    width: 65%;
+    height: 50px;
+    float: right;
+}
+
+.clearfix{
+    clear: both;
+}
+

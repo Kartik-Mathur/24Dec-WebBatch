@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.myDiv{
+    /* border: 1px dashed black; */
+    /* border-bottom: 1px dotted black; */
+    /* border-top: 1px solid #ccc; */
+    border: 1px solid black;
+    padding: 10px 5px 10px 5px;
+    margin: 10px 20px 30px 40px;
+}
+
+

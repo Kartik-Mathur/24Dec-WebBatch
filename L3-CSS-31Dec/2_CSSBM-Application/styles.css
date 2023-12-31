@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.movies{
+    /* border: 1px solid black; */
+    /* width: 40%;
+    margin: auto; */
+    /*REMOVES THE BULLET POINT*/
+    /* list-style: none;  */
+    /* list-style-position: outside;  */
+}
+
+.container{
+    border: 1px solid red;
+}
+
+
+.item{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    padding: 5px 0px;
+}
+
+.movies .item:last-child{
+    padding-bottom: 0;
+    border: 0;
+}
+
+/* div,
+span{
+    border: 1px solid green;
+} */

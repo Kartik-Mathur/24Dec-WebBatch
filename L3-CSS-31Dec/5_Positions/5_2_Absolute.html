@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        .grandFather,
+        .father{
+            padding: 10px;
+            border: 2px solid red;
+        }
+        .child{
+            border: 1px solid black;
+        }
+        .father{
+            position: relative;
+        }
+        .child{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body class="ancestors">
+
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, similique iure? Similique, numquam quas quo voluptatum consequatur dignissimos eligendi praesentium veritatis libero dolorem, ut molestias autem natus voluptas aut eaque!
+    </p>
+
+    <div class="grandFather"> GrandFather
+        <div class="father"> Father
+            <div class="child">
+                Element
+            </div>
+        </div>
+    </div>
+
+    <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate perspiciatis aperiam commodi quam libero, eaque facere facilis architecto tempore nulla sed laudantium quae quidem beatae amet consequatur! Saepe, doloremque earum?
+    </p>
+</body>
+</html>
