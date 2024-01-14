@@ -1,0 +1,14 @@
+.container{
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+}
+
+.item{
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+    border: 3px solid red;
+    font-size: 100px;
+    color: white;
+    font-weight: 800;
+}
