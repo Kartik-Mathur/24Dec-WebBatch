@@ -2,11 +2,12 @@
     display: grid;
     border: 5px solid black;
     /* grid-template-columns: 400px 400px 400px; */
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3,200px);
+    justify-items: center;
 }
 
 .item{
-    /* width: 200px; */
+    width: 100px;
     /* height: 200px; */
     background-color: orange;
     border: 3px solid red;
