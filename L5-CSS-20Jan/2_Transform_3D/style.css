@@ -1,0 +1,48 @@
+body{
+    perspective: 900px;
+}
+
+.container{
+    width: 400px;
+    height: 500px;
+    /* background-color: orange; */
+    margin: auto;
+    border: 2px solid black;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 2s;
+    /* margin-top: 150px; */
+}
+
+.side-a,
+.side-b{
+    /* height: 200px;
+    width: 200px; */
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.side-a{
+    /* background-color: orange; */
+    background-image: url('https://www.koimoi.com/wp-content/new-galleries/2022/12/no-akshay-kumar-no-hera-pheri-3-finally-worked-producers-to-bring-back-khiladi-001.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 0;
+    z-index: 1;
+    backface-visibility: hidden;
+    /* transform: rotateY(180deg); */
+}
+
+.side-b{
+    background-color: royalblue;
+    font-size: 40px;
+    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); */
+}
+
+.container:hover{
+    transform: rotateY(180deg);
+}

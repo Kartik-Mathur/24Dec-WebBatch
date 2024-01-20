@@ -1,0 +1,19 @@
+.container{
+    width: 700px;
+    height: 300px;
+    background-color: orange;
+    margin: auto;
+    border: 2px solid black;
+    margin-top: 200px;
+    /* transition-duration: 3s; */
+    /* transition-timing-function: cubic-bezier(0.58,-0.49, 0, 1.8); */
+    /* transition-timing-function: ease-in-out */
+}
+
+.container:hover{
+    background-color: blue;
+    /* border-radius: 50%; */
+    /* transform: rotateY(180deg); */
+    /* transform: skewY(40deg); */
+    /* transform: scaleZ(2); */
+}
