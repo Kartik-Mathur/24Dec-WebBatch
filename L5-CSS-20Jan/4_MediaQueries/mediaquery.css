@@ -1,0 +1,37 @@
+.card {
+    display: inline-block;
+}
+
+@media screen and (min-width: 1200px) {
+    .container{
+        width: 1200px;
+        margin: auto;
+    }
+    .card {
+        width: 300px;
+        height: 500px;
+        margin: 0 30px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1199px) {
+    .container{
+        width: 700px;
+        margin: auto;
+    }
+    .card {
+        width: 40%;
+        height: 300px;
+        margin: 0 30px;
+    }
+}
+
+@media screen and (max-width: 699px) {
+    .container{
+        width: 100%;
+    }
+    .card{
+        width: 80%;
+        height: 300px;
+    }
+}
