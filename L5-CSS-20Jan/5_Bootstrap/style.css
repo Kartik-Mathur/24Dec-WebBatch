@@ -1,0 +1,16 @@
+.box{
+    border: 1px solid black;
+    height: 400px;
+    font-size: 40px;
+}
+
+.row{
+    /* height: 40px; */
+    border: 5px solid red;
+}
+
+.col{
+    height: 100%;
+    background-color: yellow;
+    border: 1px solid black;
+}
