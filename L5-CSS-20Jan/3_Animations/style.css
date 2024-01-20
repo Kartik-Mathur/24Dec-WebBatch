@@ -1,0 +1,49 @@
+.container{
+    width: 1200px;
+    height: 80px;
+    border: 5px solid black;
+    margin: auto;
+}
+
+.loader{
+    height: 100%;
+    width: 30%;
+    background-color: royalblue;
+    animation: loader_animation 5s 2 forwards;
+    /* animation-name: loader_animation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards; */
+}
+
+@keyframes loader_animation{
+    0%{
+        width: 0%;
+    }
+    50%{
+        width: 60%;
+    }
+    80%{
+        width: 70%;
+    }
+    95%{
+        width: 70%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+/* @keyframes loader_animation{
+    from{
+        width: 0%;
+    }
+    to{
+        width: 100%;
+    }
+} */
+
+/* .container:hover .loader{
+    width: 100%;
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+} */
