@@ -1,0 +1,82 @@
+.nav-logo{
+    height: 40px;
+    width: 150px;
+    background-image: url('https://miro.medium.com/v2/resize:fit:8978/1*s986xIGqhfsN8U--09_AdA.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: scale(1.2);
+}
+
+.navbar{
+    z-index: 2;
+}
+
+.nav-links{
+    width: 30%;
+}
+
+.nav-item{
+    text-decoration: none;
+    color: black;
+    font-weight: 300;
+}
+
+.get-started {
+    border-radius: 25px;
+    width: 20%;
+}
+
+.box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 500px;
+    width: 100%;
+}
+
+.container{
+    height: 900px;
+    z-index: 1;
+    position: relative;
+    /* left: 80px; */
+    /* border: 1px solid black; */
+    /* background-color: royalblue; */
+    margin-top: 100px;
+}
+
+.header{
+    /* border: 1px solid red; */
+    width: 50%;
+}
+
+.header-heading{
+    font-weight: 400;
+    font-size: 120px;
+    margin-top: 50px; 
+}
+
+.header-description{
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 40px;
+}
+
+.header-button{
+    border-radius: 25px;
+    width: 30%;
+    font-size: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* TRENDING CSS STARTS HERE ----------------------------------------------------- */
+/* TRENDING CSS ENDS HERE ------------------------------------------------------- */

@@ -1,0 +1,18 @@
+.trending-heading img{
+    width: 30px;
+    
+}
+.trending-heading,
+.trending-heading img,
+.trending-heading-text{
+    /* border: 1px solid black; */
+}
+
+.trending-heading-text{
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.trending-list{
+    margin-top: 130px;
+}
