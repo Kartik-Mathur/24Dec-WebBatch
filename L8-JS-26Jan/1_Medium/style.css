@@ -35,7 +35,7 @@
 }
 
 .container{
-    height: 900px;
+    /* height: 900px; */
     z-index: 1;
     position: relative;
     /* left: 80px; */
