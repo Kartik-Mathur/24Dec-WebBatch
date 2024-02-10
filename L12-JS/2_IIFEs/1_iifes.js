@@ -19,7 +19,7 @@ let info = (function(name, age, hobbies, marks){
     }
 
     return {
-        passedExams,
+        "passedExams" : passedExams,
         printDetails
     }
 })("Ruchi",19,["Cleaning Books"],50);
