@@ -23,10 +23,38 @@ function getFacts(url) {
     })
 }
 
-function addFactsToList(data){
+function getFactsAxios(url) {
+    return new Promise((resolve, reject) => {
+        axios.get(url)
+            .then(data => {
+                // console.log(data.data);
+                data = data.data;
+                resolve(data)
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+
+function getFactsFetch(url) {
+    return new Promise((resolve, reject) => {
+        fetch(url)
+            .then(res=>res.json())
+            .then(data => {
+
+                resolve(data)
+            })
+            .catch(err => {
+                reject(err);
+            })
+    })
+}
+
+function addFactsToList(data) {
     let factList = document.querySelector('.factList');
     factList.innerText = '';
-    for(let i = 0; i < data.length ; i++){
+    for (let i = 0; i < data.length; i++) {
         // console.log(data[i].text)
         // factList.innerHTML += `<li>${data[i].text}</li>`;
         let li = document.createElement('li');
@@ -36,14 +64,14 @@ function addFactsToList(data){
 }
 
 let btn = document.querySelector('button');
-btn.addEventListener('click',(ev)=>{
+btn.addEventListener('click', (ev) => {
     console.log("Button Click kia");
-    getFacts('https://cat-fact.herokuapp.com/facts')
-        .then(data=>{
+    getFactsFetch('https://cat-fact.herokuapp.com/facts')
+        .then(data => {
             // console.log(data);
             addFactsToList(data);
         })
-        .catch(err=>{
+        .catch(err => {
             console.log(err);
         })
 })
