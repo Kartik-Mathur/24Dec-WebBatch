@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <style>
+        .grandFather,
+        .father,
+        .child{
+            min-height: 80px;
+            min-width: 80px;
+            margin: 20px;
+            padding: 20px;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .grandFather{
+            background-color: orange;
+        }
+        .father{
+            background-color: rgb(138, 165, 247);
+        }
+
+        .child{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grandFather">
+        Grandfather
+        <div class="father">
+            Father
+            <div class="child">
+                Child
+            </div>
+        </div>
+    </div>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
