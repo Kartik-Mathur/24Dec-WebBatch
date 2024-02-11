@@ -25,6 +25,7 @@ function getFacts(url) {
 
 function addFactsToList(data){
     let factList = document.querySelector('.factList');
+    factList.innerText = '';
     for(let i = 0; i < data.length ; i++){
         // console.log(data[i].text)
         // factList.innerHTML += `<li>${data[i].text}</li>`;
