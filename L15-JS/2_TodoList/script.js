@@ -2,9 +2,9 @@ let btn = document.querySelector('button');
 let inp = document.querySelector('input');
 let taskList = document.querySelector('.taskList');
 
-let arr = [];
+
 // Part - 2
-btn.addEventListener('click',()=>{
+btn.addEventListener('click', () => {
     let task = inp.value;
     console.log(task);
 
@@ -12,15 +12,43 @@ btn.addEventListener('click',()=>{
     // taskList.innerHTML += `<li>${task}</li>`;
     let li = document.createElement('li');
     li.innerHTML = `
-        <span>${task}</span>
-        <button class="up">↑</button>
-        <button class="down">↓</button>
-        <button class="delete">❌</button>
+        <div>
+            <span class="taskText">${task}</span>
+        </div>
+        <div>
+            <button class="up">↑</button>
+            <button class="down">↓</button>
+            <button class="delete">❌</button>
+        </div>
     `;
-    
-    arr.push(task);
+
     taskList.appendChild(li);
-    console.log(arr);
+})
+
+taskList.addEventListener('click', (ev) => {
+    let item = ev.target;
+    if (item.classList.contains('up')) {
+        let parentElement = item.parentElement.parentElement;
+        console.log(parentElement);
+        let uparWalaElement = parentElement.previousElementSibling;
+        taskList.insertBefore(parentElement, uparWalaElement);
+    }
+    else if (item.classList.contains('down')) {
+        let parentElement = item.parentElement.parentElement;
+        console.log(parentElement);
+        let neecheWalaElement = parentElement.nextElementSibling;
+        console.log(neecheWalaElement);
+        taskList.insertBefore(neecheWalaElement, parentElement);
+    }
+    else if (item.classList.contains('delete')) {
+        let parentElement = item.parentElement.parentElement;
+        console.log(parentElement);
+        parentElement.remove();
+    }
+    else if(item.classList.contains('taskText')){
+        console.log(item.innerText);
+        item.setAttribute('contenteditable',"true");
+    }
 })
 
 // Part - 1
