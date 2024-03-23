@@ -9,7 +9,6 @@ app.get('/',(req,res)=>{
     res.send("Hello From get request");
 })
 
-
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
 });
