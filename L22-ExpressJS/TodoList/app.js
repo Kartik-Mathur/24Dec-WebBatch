@@ -1,12 +1,16 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 const PORT = 3000;
 
-app.use(express.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
 app.use(express.static(path.join(__dirname,'public')));
 
 let todo = ["Dancing","Singing","Cricket","Chess"];
+// let todo=[];
 // '/gettasks', GET
 app.get('/gettasks',(req,res)=>{
     res.send(todo);
@@ -15,7 +19,8 @@ app.get('/gettasks',(req,res)=>{
 // '/addtask', POST, {name}
 app.post('/addtask',(req,res)=>{
     const {name} = req.body;
-    todo.push(name);
+    console.log(name)
+    todo.unshift(name);
     res.send(todo);
 })
 // '/deletetask', GET, {name}

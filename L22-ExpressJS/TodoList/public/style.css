@@ -1,0 +1,12 @@
+.item{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    border-bottom: 2px solid #ccc;
+    padding: 10px;
+}
+
+li:first-child .btnGroup .upBtn,
+li:last-child .btnGroup .downBtn{
+    display: none;
+}

@@ -5,13 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
-    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <h1>Todo List</h1>
 
-    <button>GET TASK</button>
+    <form action="/addtask" method="POST">
+        <input type="text" placeholder="Enter Task" class="newtask" name="name">
+        <button class="btn">Add Task</button>        
+    </form>
+
+    <ul class="tasklist">
+        <!-- <li class="item">
+            <span>Cricket</span>
+            <div class="btnGroup">
+                <button class="upBtn">↑</button>
+                <button class="downBtn">↓</button>
+                <button class="deleteBtn">❌</button>
+            </div>
+        </li>
+
+        <li class="item">
+            <span>Dance</span>
+            <div class="btnGroup">
+                <button class="upBtn">↑</button>
+                <button class="downBtn">↓</button>
+                <button class="deleteBtn">❌</button>
+            </div>
+        </li> -->
+    </ul>
 
     <script src="/script.js"></script>
+    <!-- <script src="/myscript.js"></script> -->
 </body>
 </html>
