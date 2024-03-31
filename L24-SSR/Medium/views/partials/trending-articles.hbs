@@ -1,0 +1,17 @@
+<div class="trending-list">
+    <div class="trending-heading d-flex align-items-center">
+        <img src="https://static.vecteezy.com/system/resources/previews/026/530/240/non_2x/round-uptrend-arrow-icon-vector.jpg"
+            alt="trending-logo">
+        <div class="trending-heading-text ms-2">Trending on Medium</div>
+    </div>
+
+    <div class="trending-articles d-flex flex-wrap justify-content-between mt-4 row-gap-3">
+
+        {{#each articles as |a|}}
+        <!-- ARTICLE START HERE -->
+            {{> trending_article_item a=a}}
+        <!-- ARTICLE ENDS HERE -->
+        {{/each}}
+
+    </div>
+</div>

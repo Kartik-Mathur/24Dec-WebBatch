@@ -1,0 +1,9 @@
+.course-select{
+    /* width: 100px; */
+    border-radius: 25px;
+    background-color: rgba(223, 223, 223, 0.62);
+    color: black;
+    padding: 10px;
+    display: inline-block;
+    font-weight: 300;
+}

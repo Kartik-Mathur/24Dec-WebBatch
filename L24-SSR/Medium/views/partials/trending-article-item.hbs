@@ -1,0 +1,20 @@
+<div class="trending-article trending-article-1 d-flex column-gap-3">
+
+    <div class="article-no">{{a.articleNo}}</div>
+
+    <div class="article-detail flex-grow-1">
+
+        <div class="article-author d-flex align-items-center">
+            <img src={{a.imageUrl}} alt="trending-logo">
+            <div class="article-author-name ms-2">{{a.authorName}}</div>
+        </div>
+
+        <div class="article-heading mt-1">
+            <a href="#">{{a.articleHeading}}</a>
+        </div>
+
+        <div class="article-date mt-1">
+            {{a.date}} &sdot; {{a.readTime}}
+        </div>
+    </div>
+</div>

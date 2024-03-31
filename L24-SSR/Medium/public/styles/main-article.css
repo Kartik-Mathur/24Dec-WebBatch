@@ -1,0 +1,102 @@
+.main-articles{
+    display: flex;
+    /* border: 1px solid green; */
+    margin-top: 100px;
+    justify-content: space-between;
+}
+
+.article-container{
+    width: 60%;
+    /* border: 1px solid black; */
+    height: 1500px;
+}
+
+.articles-topics-container{
+    width: 34%;
+     /* border: 1px solid black; */
+     height: 300px;
+     position: sticky;
+     top: 100px;
+}
+
+.topic-container-heading{
+    /* border: 1px solid black; */
+    /* height: 30px; */
+    font-size: 25px;
+    font-weight:600;
+}
+
+.topic-conatiner-topic-names{
+    height: 80%;
+    /* border: solid red 1px; */
+    margin-top: 10px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:centre;
+    align-items: center;
+    column-gap: 20px;
+}
+.topic{
+    width: auto;
+    height: 40px;
+    background-color: rgb(239, 235, 235);
+    border: white;
+    border-radius: 50px;
+    height: 50px;
+    font-size: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.topic:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.main-article-1-container{
+    /* border: 1px solid red; */
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 90px;
+}
+.main-article-1-content{
+    height: 100%;
+    /* border: 1px solid royalblue; */
+    width: 60%;
+
+}
+.main-article-1-logo{
+    height: 92%;
+    /* border: solid 1px green; */
+    width: 30%;
+    background-image: url(../img/image.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1;
+    background-position: -20px -2px;
+
+}
+
+
+.main-article-1-heading{
+    margin-top: 10px;
+    /* border: 1px solid red; */
+    font-size: 25px;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.main-article-1-brief{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: grey;
+}
+
+.main-article-1-date-info{
+    margin-top: 25px;
+    font-size: 18px;
+    color: grey;
+    font-weight: 600;
+}

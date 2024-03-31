@@ -1,0 +1,13 @@
+.user-article{
+    border: 2px solid black;
+    width: 65%;
+    height: 2500px;
+}
+
+.article-categories{
+    border: 2px solid black ;
+    width: 30%;
+    height: 350px;
+    position: sticky;
+    top: 120px;
+}
