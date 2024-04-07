@@ -1,3 +1,13 @@
+.trending-article-link{
+    text-decoration: none;
+}
+.trending-article-link:link{
+    color: black;
+}
+.trending-article-link:visited{
+    color: black;
+}
+
 .main-articles{
     display: flex;
     /* border: 1px solid green; */
@@ -54,11 +64,12 @@
 
 .main-article-1-container{
     /* border: 1px solid red; */
-    height: 200px;
+    /* height: 200px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 90px;
+    padding: 20px;
 }
 .main-article-1-content{
     height: 100%;
@@ -70,12 +81,11 @@
     height: 92%;
     /* border: solid 1px green; */
     width: 30%;
-    background-image: url(../img/image.png);
+    /* background-image: url(); */
     background-repeat: no-repeat;
-    background-size: cover;
-    padding: 1;
+    background-size: contain;
+    padding: 1px;
     background-position: -20px -2px;
-
 }
 
 

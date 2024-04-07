@@ -67,8 +67,42 @@ class Tasks {
         })
     }
 
-    static increase(task) { }
-    static decrease(task) { }
+    static increase(task) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                let data = await fs.readFile(dbPath);
+                let todo = JSON.parse(data);
+                let indx = todo.indexOf(task);
+                if (indx <= 0 || indx >= todo.length) return reject("Cannot Increase Priority of this task");
+                let temp = todo[indx];
+                todo[indx] = todo[indx - 1];
+                todo[indx - 1] = temp;
+                await fs.writeFile(dbPath, JSON.stringify(todo));
+                resolve("Increase Priority task success");
+            }
+            catch (err) {
+                reject(err);
+            }
+        })
+    }
+    static decrease(task) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                let data = await fs.readFile(dbPath);
+                let todo = JSON.parse(data);
+                let indx = todo.indexOf(task);
+                if(indx <= -1 || indx >= todo.length-1) return reject("Cannot Increase Priority of this task");
+                let temp = todo[indx];
+                todo[indx] = todo[indx + 1];
+                todo[indx + 1] = temp;
+                await fs.writeFile(dbPath, JSON.stringify(todo));
+                resolve("Decrease Priority task success");
+            }
+            catch (err) {
+                reject(err);
+            }
+        })
+    }
 }
 
 module.exports = Tasks;

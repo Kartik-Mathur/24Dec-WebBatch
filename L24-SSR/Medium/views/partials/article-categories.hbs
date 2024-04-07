@@ -1,6 +1,8 @@
 <div style="border: 2px solid red;" class="major-articles d-flex justify-content-between">
     <div class="user-article">
-        {{> blog_details}}
+        {{#each blogDetails as |b|}}
+            {{> blog_details b=b}}
+        {{/each}}
     </div>
     <div class="article-categories">
         <div class="heading" style="font-weight: 600;">Discover more of what matters to you</div>

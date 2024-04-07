@@ -3,20 +3,19 @@
         <div class="article-header">
 
             <div class="article-logo article-logo-5"></div>
-            <div class="article-heading">Happy JS </div>
+            <div class="article-heading">{{b.authorName}} in {{b.company}}</div>
 
         </div>
 
         <div class="main-article-1-heading">
-            Happy 28th JAVA SCRIPT, How is it going
+            {{b.title}}
         </div>
         <div class="main-article-1-brief">
-            From CB student to SDE
+            {{b.titleDescription}}
         </div>
         <div class="main-article-1-date-info">
-            Mar 6, 2024 · 13 min read
+            {{b.date}} · {{b.time}}
         </div>
     </div>
-    <div class="main-article-1-logo"></div>
-
+    <div class="main-article-1-logo" style="background-image: url({{b.img}});"></div>
 </div>

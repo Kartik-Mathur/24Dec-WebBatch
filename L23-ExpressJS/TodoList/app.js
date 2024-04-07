@@ -45,17 +45,26 @@ app.get('/deletetask',async (req,res,next)=>{
     
 })
 // '/increase', GET, {name}
-app.get('/increase',(req,res,next)=>{
+app.get('/increase',async (req,res,next)=>{
     const {name} = req.query;
-    
-    res.redirect('/gettasks');
-
+    try{
+        await Tasks.increase(name);
+        res.redirect('/gettasks');
+    }
+    catch(err){
+        next(err);
+    }
 })
 // '/decrease', GET, {name}
-app.get('/decrease',(req,res,next)=>{
+app.get('/decrease',async (req,res,next)=>{
     const {name} = req.query;
-    
-    res.redirect('/gettasks');
+    try{
+        await Tasks.decrease(name);
+        res.redirect('/gettasks');
+    }
+    catch(err){
+        next(err);
+    }
 })
 
 app.use((req,res,next)=>{

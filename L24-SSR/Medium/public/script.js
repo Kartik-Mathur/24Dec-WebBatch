@@ -7,7 +7,7 @@ window.onscroll = throttle((ev) => {
     else{
         document.querySelector('.get-started').classList.remove('green');
     }
-}, 100);
+}, 500);
 
 
 function throttle(fun, t) {
