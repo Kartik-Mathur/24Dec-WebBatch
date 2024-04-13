@@ -1,0 +1,48 @@
+Insertion in mongodb
+- To create a new DB 
+    - use bollywood;
+    - show dbs; // To show available databases;
+- To check collections
+    - show collections; // To see the available collections.
+
+- To create a collection.
+    -  db.createCollection('movies') // Will create movies collection 
+    inside bollywood db.
+    -  db.movies.insertOne(
+            {
+                title: "The Favourite",
+                genres: [ "Drama", "History" ],
+                runtime: 121,
+                rated: "R",
+                year: 2018,
+                directors: [ "Yorgos Lanthimos" ],
+                cast: [ "Olivia Colman", "Emma Stone", "Rachel Weisz" ],
+                type: "movie"
+            }
+        )
+    - db.movies.insertMany([
+        {
+            title: "Jurassic World: Fallen Kingdom",
+            genres: [ "Action", "Sci-Fi" ],
+            runtime: 130,
+            rated: "PG-13",
+            year: 2018,
+            directors: [ "J. A. Bayona" ],
+            cast: [ "Chris Pratt", "Bryce Dallas Howard", "Rafe Spall" ],
+            type: "movie"
+            },
+            {
+            title: "Tag",
+            genres: [ "Comedy", "Action" ],
+            runtime: 105,
+            rated: "R",
+            year: 2018,
+            directors: [ "Jeff Tomsic" ],
+            cast: [ "Annabelle Wallis", "Jeremy Renner", "Jon Hamm" ],
+            type: "movie"
+            }
+        ])
+
+
+- To find data 
+    - db.movies.find() // To find all the data in the collection.

@@ -1,0 +1,9 @@
+1. Create data folder.
+2. Run command mongod --dbpath=data 
+    - To start the mongodb server, and data stores inside data folder.
+    - To check whether server of mongodb is running or not 
+    - Go to browser and type localhost:27017
+    - If it shows mongoDB server is running then we are good to go.
+3. We can directly start using mongoDB commands.
+4. Run command mongosh in another terminal.
+    - To run mongoDB commands via terminal.
