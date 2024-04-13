@@ -30,3 +30,14 @@ let students = [
 
 // To insert data into the table
 // db.students.insertMany(students);
+// upar se students ka array copy paste krna padega tabhi yeh chlega otherwise nhi
+/* 
+db.students.updateMany(
+    {address:'DTU'},
+    {
+        $set:{
+            address: 'DTU, New Delhi'
+        }
+    }
+)
+*/
