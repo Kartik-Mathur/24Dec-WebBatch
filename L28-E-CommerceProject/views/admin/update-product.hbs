@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Products Page</title>
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+    {{> navbar}}
+    <h1>Admin Products List</h1>
+    <form action="/admin/products/updateproduct" method="post">
+        <ul>
+            <li>
+                <img src={{product.imageUrl}}></img><br>
+                Image Url: <input type="text" name="imageUrl" value={{product.imageUrl}}><br>
+                Name: <input type="text" name="name" value={{product.name}}></input> <br>
+                Description: <input type="text" name="description" value={{product.description}}></input> <br>
+                Price: <input type="text" name="price" value={{product.price}}></input> <br>
+                Seller: <input type="text" name="seller" value={{product.seller}}></input> <br>
+                <input type="hidden" name="id" value={{product._id}}></input>
+                {{#if product.reviews}}
+                <h5>Reviews</h5>
+                <ul>
+                    {{#each product.reviews as |r|}}
+                    {{r.details}}, {{r.rating}}
+                    {{/each}}
+                </ul>
+                {{/if}}
+            </li>
+        </ul>
+        <button type="submit">Update Product</button>
+    </form>
+
+
+</body>
+
+</html>
