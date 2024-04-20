@@ -1,0 +1,19 @@
+{
+  "name": "l28-e-commerceproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon app.js -e js,mjs,hbs,json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "flash": "^1.1.0",
+    "hbs": "^4.2.0",
+    "mongoose": "^8.3.2"
+  }
+}
