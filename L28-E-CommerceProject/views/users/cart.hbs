@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+    {{> navbar cartQuantity=cartQuantity}}
+    <h1>My Cart</h1>
+    Total Price: <span class="totalPrice"> {{totalPrice}}</span>
+    <ul class="cartItems">
+        {{#each cart as |p|}}
+        <li>
+            <img src={{p.id.imageUrl}}></img><br>
+            Name: <span>{{p.id.name}}</span> <br>
+            Description: <span>{{p.id.description}}</span><br>
+            Price: <span>{{p.id.price}}</span><br>
+            {{#if p.id.reviews}}
+            <h5>Reviews</h5>
+            <ul>
+                {{#each p.id.reviews as |r|}}
+                {{r.details}}, {{r.rating}}
+                {{/each}}
+            </ul>
+            {{/if}}
+            <div class="quantity">
+                <button id="{{p.id._id}}" class="quantityBtn">-</button> Quantity: {{p.quantity}} <button
+                    id="{{p.id._id}}" class="quantityBtn">+</button>
+            </div>
+            <div style="display: none;" id="{{p.id._id}}"></div>
+        </li>
+        {{/each}}
+    </ul>
+
+    <script src="/scripts/user.js"></script>
+
+</body>
+
+</html>

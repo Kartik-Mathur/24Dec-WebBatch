@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Product Detail</title>
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+    {{> navbar}}
+
+    <h1>Welcome to User-product details page</h1>
+
+    <ul>
+        <li>
+            <img src={{product.imageUrl}}></img><br>
+            Name: <span>{{product.name}}</span> <br>
+            Description: <span>{{product.description}}</span><br>
+            Price: <span>{{product.price}}</span><br>
+            Seller: <span> {{product.seller}}</span><br>
+            Date: <span>Date {{product.date}}</span><br>
+            {{#if product.reviews}}
+            <h5>Reviews</h5>
+            <ul>
+                {{#each product.reviews as |r|}}
+                {{r.details}}, {{r.rating}}
+                {{/each}}
+            </ul>
+            {{/if}}
+            <a href="/user/cart/{{p._id}}">Add To Cart</a>
+
+        </li>
+    </ul>
+</body>
+
+</html>
