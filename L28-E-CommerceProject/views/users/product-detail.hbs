@@ -11,7 +11,50 @@
             display: flex;
             justify-content: space-around;
         }
+
+        .review-section-header {
+            display: flex;
+            gap: 10px;
+        }
+
+        .review-section-details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .productContent {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .productContent-1,
+        .productContent-2 {
+            width: 50%;
+        }
+
+        .productContent-1 {
+            float: left;
+        }
+
+        .productContent-2 {
+            float: right;
+        }
+
+        .clearfix {
+            clear: both;
+        }
     </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -19,26 +62,75 @@
 
     <h1>Welcome to User-product details page</h1>
 
-    <ul>
-        <li>
+    <div class="productContent">
+        <div class="productContent-1">
             <img height="300px" src={{product.imageUrl}}></img><br>
             Name: <span>{{product.name}}</span> <br>
             Description: <span>{{product.description}}</span><br>
             Price: <span>{{product.price}}</span><br>
             Seller: <span> {{product.seller}}</span><br>
             Date: <span>Date {{product.date}}</span><br>
-            {{#if product.reviews}}
-            <h5>Reviews</h5>
-            <ul>
-                {{#each product.reviews as |r|}}
-                {{r.details}}, {{r.rating}}
-                {{/each}}
-            </ul>
-            {{/if}}
             <a href="/user/cart/{{p._id}}">Add To Cart</a>
+        </div>
 
-        </li>
-    </ul>
+        <div class="productContent-2">
+            <div class="review-section">
+                <div class="review-section-header">
+                    <div>Reviews</div> <button class="reviewBtn">Add a Review</button>
+                </div>
+
+                <div class="review-section-details hide">
+                    <textarea cols="40" rows="5" type="text" name="review" id="review"
+                        placeholder="Enter a review"> </textarea>
+                    <button class="submitReview">Submit Review</button>
+                    <div style="display: none;">{{product._id}}</div>
+                </div>
+                <ul class="user-reviews">
+                    {{#if product.reviews}}
+
+                    {{#each product.reviews as |r|}}
+                    <li>{{r.details}}</li>
+                    <div style="display: none;">{{r.rating}}</div>
+                    {{/each}}
+
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+
+
+    <script>
+        document.querySelector(".reviewBtn").addEventListener('click', (ev) => {
+            ev.preventDefault();
+            document.querySelector(".review-section-details").classList.toggle('hide');
+        })
+
+        document.querySelector('.submitReview').addEventListener('click', (ev) => {
+            ev.preventDefault();
+            let review = document.querySelector('#review').value.trim();
+            console.log(review);
+            let id = ev.target.nextElementSibling.innerText;
+            console.log(id);
+            axios.post('/user/review/add', {
+                review,
+                productId: id
+            }).then(({ data }) => {
+                // console.log(data);
+                document.querySelector('.user-reviews').innerText = "";
+                data.reviews.forEach(r => {
+                    let li = document.createElement('li');
+                    li.innerText = r.details;
+                    document.querySelector('.user-reviews').appendChild(li);
+                });
+            })
+            document.querySelector(".review-section-details").classList.toggle('hide');
+        })
+    </script>
+
 </body>
 
 </html>

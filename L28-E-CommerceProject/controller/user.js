@@ -59,7 +59,7 @@ module.exports.getCartShow = async (req, res, next) => {
         }).populate('cart.id');
 
         console.log(user.cart);
-        
+
         let totalPrice = 0;
         user.cart.forEach((item) => {
             totalPrice += parseInt(item.id.price) * parseInt(item.quantity);
@@ -128,7 +128,7 @@ module.exports.getCartIncrease = async (req, res, next) => {
                 newCart.push({ ...item, quantity: item.quantity + 1 })
                 totalPrice += parseInt(item.id.price) * parseInt(item.quantity + 1);
             }
-            else{
+            else {
                 newCart.push(item);
                 totalPrice += parseInt(item.id.price) * parseInt(item.quantity);
             }
@@ -140,6 +140,31 @@ module.exports.getCartIncrease = async (req, res, next) => {
             cart: user.cart,
             totalPrice,
             cartQuantity: user.cart.length
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+module.exports.postAddReview = async (req, res, next) => {
+    const { productId, review } = req.body;
+
+    try {
+        let product = await products.findOne({_id: productId});
+        product.reviews.unshift({
+            details: review,
+            userId: req.user._id
+        });
+        product.save();
+        let user = await users.findOne({
+            _id: req.user._id
+        });
+        res.send({
+            reviews: product.reviews,
+            user:{
+                name: user.name
+            }
         });
     } catch (err) {
         next(err);

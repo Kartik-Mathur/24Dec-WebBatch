@@ -9,6 +9,6 @@ router.get('/cart/add/:id',userController.getAddToCartById);
 router.get('/cart/show',userController.getCartShow);
 router.get('/cart/decrease',userController.getCartDecrease);
 router.get('/cart/increase',userController.getCartIncrease);
-
+router.post('/review/add',userController.postAddReview);
 
 module.exports=router;

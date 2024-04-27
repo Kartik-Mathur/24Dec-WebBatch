@@ -25,14 +25,6 @@
             Name: <span>{{p.name}}</span> <br>
             Description: <span>{{p.description}}</span><br>
             Price: <span>{{p.price}}</span><br>
-            {{#if p.reviews}}
-                <h5>Reviews</h5>
-                <ul>
-                    {{#each p.reviews as |r|}}
-                    {{r.details}}, {{r.rating}}
-                    {{/each}}
-                </ul>
-            {{/if}}
             <a href={{p._id}}>GET Info</a>
             <a href="/user/cart/add/{{p._id}}">Add To Cart</a>
 

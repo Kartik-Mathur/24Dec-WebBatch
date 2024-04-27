@@ -6,9 +6,11 @@ const mongoose = require('mongoose');
 const hbs = require('hbs');
 app.set('view engine', 'hbs');
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 const users = require('./models/users');
 // app.use(require('flash')());
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(async (req, res, next) => {
