@@ -109,3 +109,38 @@ module.exports.getCartDecrease = async (req, res, next) => {
         next(err);
     }
 }
+
+
+module.exports.getCartIncrease = async (req, res, next) => {
+    const { id } = req.query;
+    try {
+        let user = await users.findOne({
+            _id: req.user._id
+        }).populate('cart.id');
+
+        console.log(user.cart);
+
+        let totalPrice = 0;
+        let newCart = []
+        user.cart.forEach((item) => {
+            if (item.id._id == id) {
+                newCart.push({ ...item, quantity: item.quantity + 1 })
+                totalPrice += parseInt(item.id.price) * parseInt(item.quantity + 1);
+            }
+            else{
+                newCart.push(item);
+                totalPrice += parseInt(item.id.price) * parseInt(item.quantity);
+            }
+        })
+        user.cart = newCart;
+        user.save();
+        console.log(user.cart.length)
+        res.send({
+            cart: user.cart,
+            totalPrice,
+            cartQuantity: user.cart.length
+        });
+    } catch (err) {
+        next(err);
+    }
+}
