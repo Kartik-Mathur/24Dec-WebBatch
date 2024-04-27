@@ -21,10 +21,8 @@ app.use(async (req, res, next) => {
     }
 })
 
-
-app.get('/', (req, res, next) => {
-    res.render('index')
-})
+const homeRouter = require('./routes/home');
+app.get('/', homeRouter);
 
 // Router
 const userRouter = require('./routes/user');

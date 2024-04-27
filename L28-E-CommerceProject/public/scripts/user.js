@@ -15,7 +15,7 @@ cartItems.addEventListener('click', (ev) => {
                 // totalPrice += parseInt(p.id.price) * parseInt(p.quantity);
                 let li = document.createElement('li');
                 li.innerHTML = `
-                <img src=${p.id.imageUrl}></img><br>
+                <img height="150px" src=${p.id.imageUrl}></img><br>
                 Name: <span>${p.id.name}</span> <br>
                 Description: <span>${p.id.description}</span><br>
                 Price: <span>${p.id.price}</span><br>
@@ -53,7 +53,7 @@ cartItems.addEventListener('click', (ev) => {
                 // totalPrice += parseInt(p.id.price) * parseInt(p.quantity);
                 let li = document.createElement('li');
                 li.innerHTML = `
-                <img src=${p.id.imageUrl}></img><br>
+                <img height="150px" src=${p.id.imageUrl}></img><br>
                 Name: <span>${p.id.name}</span> <br>
                 Description: <span>${p.id.description}</span><br>
                 Price: <span>${p.id.price}</span><br>

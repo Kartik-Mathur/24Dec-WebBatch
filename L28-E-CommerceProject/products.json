@@ -1,0 +1,58 @@
+[
+  {
+    "category": "electronics",
+    "name": "Laptop",
+    "price": 40000,
+    "description": "Intel Core i11",
+    "seller": "Dell",
+    "imageUrl": "abc"
+  },
+  {
+    "category": "electronics",
+    "name": "Phone",
+    "price": 40000,
+    "description": "6GB RAM 128 GB memory",
+    "seller": "Samsung",
+    "imageUrl": "abc"
+  },
+  {
+    "category": "electronics",
+    "name": "Speakers",
+    "price": 15000,
+    "description": "Dolby Atmos",
+    "seller": "Sony",
+    "imageUrl": "abc"
+  },
+  {
+    "category": "electronics",
+    "name": "Television",
+    "price": 70000,
+    "description": "64 inch Dolby Atmos 4K Bravia Display",
+    "seller": "Sony",
+    "imageUrl": "abc"
+  },
+  {
+    "category": "food",
+    "name": "Trimmer",
+    "price": 10000,
+    "description": "Power Saving",
+    "seller": "Philips",
+    "imageUrl": "abc"
+  },
+  {
+    "category": "food",
+    "name": "Smart Watch",
+    "price": 30000,
+    "description": "Very Smart",
+    "seller": "Apple",
+    "imageUrl": "abc"
+  },
+  {
+    "category": "shoes",
+    "name": "Fridge",
+    "price": 50000,
+    "description": "Thanda Thanda cool cool",
+    "seller": "Whirlpool",
+    "imageUrl": "abc"
+  }
+]

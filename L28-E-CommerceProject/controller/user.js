@@ -59,6 +59,7 @@ module.exports.getCartShow = async (req, res, next) => {
         }).populate('cart.id');
 
         console.log(user.cart);
+        
         let totalPrice = 0;
         user.cart.forEach((item) => {
             totalPrice += parseInt(item.id.price) * parseInt(item.quantity);

@@ -2,14 +2,15 @@ const mongoose= require('mongoose');
 const products = require('../models/products');
 
 module.exports.postAddProduct = async (req,res,next)=>{
-    const {name,price,seller,imageUrl,description} = req.body;
+    const {name,price,seller,imageUrl,description,category} = req.body;
     try{
         await products.create({
             name,
             price,
             seller,
             imageUrl,
-            description
+            description,
+            category
         });
         res.redirect('/admin/products/all');
     }catch(err){
@@ -74,7 +75,7 @@ module.exports.getUpdateProduct = async (req,res,next)=>{
 
 module.exports.postUpdateProduct = async (req,res,next)=>{
     try{
-        const {name,price,seller,imageUrl,description,id} = req.body;
+        const {name,price,seller,imageUrl,description,id,category} = req.body;
 
         const product = await products.findOne({_id:new mongoose.Types.ObjectId(id)});
         product.name = name;
