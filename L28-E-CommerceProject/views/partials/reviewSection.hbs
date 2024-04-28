@@ -1,0 +1,10 @@
+<ul class="user-reviews">
+    {{#if product.reviews}}
+
+    {{#each product.reviews as |r|}}
+    <li>{{r.details}}</li>
+    <div style="display: none;">{{r.rating}}</div>
+    {{/each}}
+
+    {{/if}}
+</ul>

@@ -27,14 +27,7 @@
             Name: <span>{{p.id.name}}</span> <br>
             Description: <span>{{p.id.description}}</span><br>
             Price: <span>{{p.id.price}}</span><br>
-            {{#if p.id.reviews}}
-            <h5>Reviews</h5>
-            <ul>
-                {{#each p.id.reviews as |r|}}
-                {{r.details}}, {{r.rating}}
-                {{/each}}
-            </ul>
-            {{/if}}
+
             <div class="quantity">
                 <button id="{{p.id._id}}" class="decreaseQuantityBtn">-</button> Quantity: {{p.quantity}} <button
                     id="{{p.id._id}}" class="increaseQuantityBtn">+</button>

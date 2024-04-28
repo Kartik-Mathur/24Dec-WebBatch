@@ -70,7 +70,7 @@
             Price: <span>{{product.price}}</span><br>
             Seller: <span> {{product.seller}}</span><br>
             Date: <span>Date {{product.date}}</span><br>
-            <a href="/user/cart/{{p._id}}">Add To Cart</a>
+            <a href="/user/cart/add/{{product._id}}">Add To Cart</a>
         </div>
 
         <div class="productContent-2">
@@ -85,16 +85,7 @@
                     <button class="submitReview">Submit Review</button>
                     <div style="display: none;">{{product._id}}</div>
                 </div>
-                <ul class="user-reviews">
-                    {{#if product.reviews}}
-
-                    {{#each product.reviews as |r|}}
-                    <li>{{r.details}}</li>
-                    <div style="display: none;">{{r.rating}}</div>
-                    {{/each}}
-
-                    {{/if}}
-                </ul>
+                {{>reviewSection product=product}}
             </div>
         </div>
 

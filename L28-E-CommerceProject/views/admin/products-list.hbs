@@ -27,14 +27,7 @@
             Price: <span>{{p.price}}</span><br>
             Seller: <span>Seller {{p.seller}}</span><br>
             Date: <span>Date {{p.date}}</span><br>
-            {{#if p.reviews}}
-                <h5>Reviews</h5>
-                <ul>
-                    {{#each p.reviews as |r|}}
-                    <li>{{r.details}}</li>
-                    {{/each}}
-                </ul>
-            {{/if}}
+            {{>reviewSection product=p}}
             <a href={{p._id}}>GET Info</a>
         </li>
         {{/each}}

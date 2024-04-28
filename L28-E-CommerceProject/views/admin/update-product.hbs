@@ -27,14 +27,7 @@
                 Price: <input type="text" name="price" value={{product.price}}></input> <br>
                 Seller: <input type="text" name="seller" value={{product.seller}}></input> <br>
                 <input type="hidden" name="id" value={{product._id}}></input>
-                {{#if product.reviews}}
-                <h5>Reviews</h5>
-                <ul>
-                    {{#each product.reviews as |r|}}
-                    {{r.details}}, {{r.rating}}
-                    {{/each}}
-                </ul>
-                {{/if}}
+                {{>reviewSection product=product}}
             </li>
         </ul>
         <button type="submit">Update Product</button>
