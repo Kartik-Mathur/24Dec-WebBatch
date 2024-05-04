@@ -25,10 +25,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/signup', (req, res) => {
+    if (req.session.user) return res.redirect('/profile');
     res.render('signup');
 })
 
 app.get('/login', (req, res) => {
+    if (req.session.user) return res.redirect('/profile');
     console.log(req.flash('msg'));
     res.render('login', {
         msg: req.flash("msg")[0]
@@ -37,6 +39,7 @@ app.get('/login', (req, res) => {
 
 
 app.post('/signup', async (req, res) => {
+    if (req.session.user) return res.redirect('/profile');
     const { name, password } = req.body;
 
     let user = await User.findOne({ name });
@@ -62,6 +65,7 @@ app.post('/signup', async (req, res) => {
 })
 
 app.post('/login', async (req, res) => {
+    if (req.session.user) return res.redirect('/profile');
     const { name, password } = req.body;
     let user = await User.findOne({ name });
     console.log(user);
@@ -83,6 +87,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
 
 
 app.get('/logout', (req, res) => {
+    if (!req.session.user) return res.redirect('/login');
     req.session.destroy(() => {
         res.redirect('/login');
     })
