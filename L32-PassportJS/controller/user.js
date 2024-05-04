@@ -14,8 +14,8 @@ module.exports.getSignup = (req, res, next) => {
 
 
 module.exports.postSignup = async (req, res, next) => {
-    const { name, password } = req.body;
-    let user = await User.findOne({ name });
+    const { username, password } = req.body;
+    let user = await User.findOne({ username });
     if (user) {
         return res.render('signup', {
             msg: "Username exists choose a different name"
@@ -26,7 +26,7 @@ module.exports.postSignup = async (req, res, next) => {
     bcrypt.hash(password, saltRounds, async function (err, hash) {
         // Store hash in your password DB.
         user = new User({
-            name,
+            username,
             password: hash
         })
 
@@ -34,4 +34,12 @@ module.exports.postSignup = async (req, res, next) => {
 
         res.redirect('/login');
     });
+}
+
+
+module.exports.getProfile = (req,res,next)=>{
+    console.log(req.user)
+    res.render('profile',{
+        user:req.user
+    })
 }
