@@ -1,19 +1,24 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/user');
 module.exports.getHome = (req, res, next) => {
+    if(req.user) return res.redirect('/profile');
     res.render('home');
 }
 
 module.exports.getLogin = (req, res, next) => {
+    if(req.user) return res.redirect('/profile');
     res.render('login')
 }
 
 module.exports.getSignup = (req, res, next) => {
+    if(req.user) return res.redirect('/profile');
     res.render('signup')
 }
 
 
 module.exports.postSignup = async (req, res, next) => {
+    if(req.user) return res.redirect('/profile');
+
     const { username, password } = req.body;
     let user = await User.findOne({ username });
     if (user) {
@@ -38,7 +43,6 @@ module.exports.postSignup = async (req, res, next) => {
 
 
 module.exports.getProfile = (req,res,next)=>{
-    console.log(req.user)
     res.render('profile',{
         user:req.user
     })
