@@ -31,11 +31,22 @@
             display: inline-block;
         }
     </style>
+
+    <link rel="stylesheet" href="/styles/loginSectionHome.css">
 </head>
 
 <body>
 
-    {{> navbar}}
+    <nav class="navbar">
+        <a href="/">Home</a>
+        {{!-- <a href="/user/products/all">User Products</a> --}}
+        <a href="#">
+            <input type="text" name="searchbar" id="searchbar" placeholder="Enter product to search">
+        </a>
+        <a href="#">
+            <span class="login">Login</span>
+        </a>
+    </nav>
 
     {{#each products as |product|}}
     <div class="category">{{@key}}</div>
@@ -52,12 +63,44 @@
         </div>
         {{/each}}
     </div>
-
-
     <br>
     <br>
     <br>
     {{/each}}
+
+
+    <div class="loginSection hidden">
+
+        <div class="loginBtnGroup">
+            <a href="/login">
+                <button>Login Via email/password</button>
+            </a>
+            <a href="/login/google">
+                <button class="googleBtn">
+                    <img height="30px"
+                        src="https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_google-512.png"
+                        alt="google-logo">
+                    <span> Google</span>
+                </button>
+            </a>
+        </div>
+
+        <div class="cutBtn">
+            <img height="30px" src="https://cdn4.iconfinder.com/data/icons/essentials-73/24/039_-_Cross-1024.png" alt="cut-btn">
+        </div>
+
+    </div>
+
+    <script> 
+        document.querySelector('.login').addEventListener('click',(ev)=>{
+            document.querySelector('.loginSection').classList.toggle('hidden');
+        })
+
+        document.querySelector('.cutBtn').addEventListener('click',(ev)=>{
+            document.querySelector('.loginSection').classList.toggle('hidden');
+        })
+
+    </script>
 
 </body>
 

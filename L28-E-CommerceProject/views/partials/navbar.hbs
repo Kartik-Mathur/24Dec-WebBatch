@@ -4,19 +4,27 @@
     <a href="#">
         <input type="text" name="searchbar" id="searchbar" placeholder="Enter product to search">
     </a>
-    <a href="#">
+    {{#if isLoggedIn}}
+    <a href="/logout">
+        <span class="logout">Logout</span>
+    </a>
+    {{else}}
+    <a href="/login">
         <span class="login">Login</span>
     </a>
+    {{/if}}
     <a href="/user/cart/show">
         <span class="cart">Cart</span>
         {{#if cartQuantity}}
         <button class="cartQuantity">{{cartQuantity}}</button>
         {{/if}}
     </a>
+    {{#if isAdmin}}
     <a href="/admin">
         <span class="admin">Admin Page</span>
     </a>
     <a href="/admin/products/all">
         <span class="">All Admin Products</span>
     </a>
+    {{/if}}
 </nav>

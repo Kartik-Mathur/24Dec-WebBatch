@@ -1,0 +1,40 @@
+.loginSection {
+    height: 100vh;
+    width: 30%;
+    background-color: orange;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.loginSection .loginBtnGroup{
+    display: flex;
+    flex-direction: column;
+}
+
+.loginBtnGroup a, 
+.loginBtnGroup a:visited {
+    color: black;
+}
+
+.loginBtnGroup a button{
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+    width: 80%;
+    background-color: white;
+    margin-top: 50px;
+}
+
+.googleBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.hidden{
+    display: none;
+}

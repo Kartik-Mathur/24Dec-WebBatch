@@ -2,43 +2,50 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-    name: {
+    username: {
         type: String,
         required: true
     },
-    contactNumber:{
+    contactNumber: {
         type: String,
         required: true
     },
-    emailId: String,
+    email: String,
+    password: {
+        type: String
+    },
     cart: [{
         id: {
             type: Schema.Types.ObjectId,
-            ref:'products'
+            ref: 'products'
         },
         quantity: Number,
-    }]
+    }],
+    role: {
+        type: String,
+        required: true
+    }
 })
 
-module.exports = mongoose.model('users',userSchema);
+module.exports = mongoose.model('users', userSchema);
 
 let usersData = [
     {
         name: "Aayush",
         contactNumber: "9999999999",
         emailId: "ayush@gmail.com",
-        cart:[]
+        cart: []
     },
     {
         name: "Pinky Bhai",
         contactNumber: "8888888888",
         emailId: "khitij@gmail.com",
-        cart:[]
+        cart: []
     },
     {
         name: "Sumit",
         contactNumber: "7777777777",
         emailId: "sumit@gmail.com",
-        cart:[]
+        cart: []
     }
 ]

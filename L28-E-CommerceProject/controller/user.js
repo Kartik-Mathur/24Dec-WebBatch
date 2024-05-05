@@ -1,12 +1,17 @@
 const products = require('../models/products');
 const mongoose = require('mongoose');
 const users = require('../models/users');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 module.exports.getProductsAll = async (req, res, next) => {
+    console.log(req.user)
     try {
         let all_products = await products.find({});
         res.render('users/products-list', {
-            products: all_products
+            products: all_products,
+            isAdmin: req.user.role == 'admin',
+            isLoggedIn: true
         })
     } catch (err) {
         next(err);
@@ -19,7 +24,9 @@ module.exports.getProductById = async (req, res, next) => {
         let product = await products.findOne({ _id: new mongoose.Types.ObjectId(id) });
         // console.log(product)
         res.render('users/product-detail', {
-            product: product
+            product: product,
+            isAdmin: req.user.role == 'admin',
+            isLoggedIn: true
         })
     } catch (err) {
         next(err);
@@ -68,7 +75,9 @@ module.exports.getCartShow = async (req, res, next) => {
         res.render('users/cart', {
             cart: user.cart,
             totalPrice,
-            cartQuantity: user.cart.length
+            cartQuantity: user.cart.length,
+            isAdmin: req.user.role == 'admin',
+            isLoggedIn: true
         });
     } catch (err) {
         next(err);
@@ -151,7 +160,7 @@ module.exports.postAddReview = async (req, res, next) => {
     const { productId, review } = req.body;
 
     try {
-        let product = await products.findOne({_id: productId});
+        let product = await products.findOne({ _id: productId });
         product.reviews.unshift({
             details: review,
             userId: req.user._id
@@ -162,10 +171,38 @@ module.exports.postAddReview = async (req, res, next) => {
         });
         res.send({
             reviews: product.reviews,
-            user:{
+            user: {
                 name: user.name
             }
         });
+    } catch (err) {
+        next(err);
+    }
+}
+
+
+module.exports.postSignUp = async (req, res, next) => {
+    const { username, email, password, contact } = req.body;
+
+    try {
+        let user = await users.findOne({
+            username
+        });
+        if (user) return res.redirect('/signup');
+
+        bcrypt.hash(password, saltRounds, async function (err, hash) {
+            if(err) return next(err);
+
+            await users.create({
+                username,
+                password: hash,
+                contactNumber: contact,
+                email: email || "",
+                role: 'user'
+            })
+            res.redirect('/login');
+        });
+
     } catch (err) {
         next(err);
     }

@@ -13,3 +13,12 @@ module.exports.getHome = async (req, res, next) => {
         next(err);
     }
 }
+
+module.exports.getLogin = (req,res,next)=>{
+    res.render('login');
+}
+
+
+module.exports.getSignup = (req,res,next)=>{
+    res.render('signup');
+}
