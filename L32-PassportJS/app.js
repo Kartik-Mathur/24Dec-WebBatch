@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'hbs');
-
+require('dotenv').config()
 
 const passport = require('passport');
 app.use(passport.initialize());
@@ -17,7 +17,7 @@ require('./authentication/passport');
 
 app.use('/', require('./routes/user'));
 
-mongoose.connect(`mongodb+srv://kartik:kartik@cluster0.97kax2o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`)
+mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         app.listen(PORT, () => {
             console.log(`http://localhost:` + PORT);
