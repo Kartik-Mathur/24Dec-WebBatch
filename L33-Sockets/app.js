@@ -20,12 +20,19 @@ io.on('connection',(socket)=>{
     });
 
     socket.on('sendMessage',({msg})=>{
-        console.log(socket.id, "says",msg);
+        // console.log(socket.id, "says",msg);
+        io.emit('messageRecieved',{
+            msg,
+            user: idMap[socket.id]
+        })
     })
 
     socket.on('enterapp',({userName})=>{
         console.log(userName,"has entered the app");
         idMap[socket.id] = userName;
+        socket.broadcast.emit('personin',{
+            msg: `${userName} has joined the chat`
+        });
     })
 })
 
