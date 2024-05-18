@@ -16,8 +16,24 @@
         .logs{
             position: absolute;
             right: 0;
-            height: 500px;
+            top: 0;
+            height: 150px;
             width: 200px;
+            border: 1px solid black;
+        }
+
+        .rooms{
+            position: absolute;
+            right: 0;
+            top: 150px;
+            width: 200px;
+        }
+
+        .cpproom,
+        .javaroom,
+        .pythonroom{
+            width: 200px;
+            height: 300px;
             border: 1px solid black;
         }
     </style>
@@ -36,11 +52,46 @@
     <div class="chatbox">
         <input type="text" class="input" placeholder="Send message">
         <button class="btn">Send</button>
+        <div class="rooms">
+            <h2>Rooms</h2>
+            <div class="roomList">
+                <button class="cpp">C++</button>
+                <button class="java">Java</button>
+                <button class="python">Python</button>
+            </div>
+
+            <div class="cpproom hidden">
+                <div class="heading">CPP</div>
+                <div class="cppchatbox">
+                    <input type="text"> <button class="cppbtn">Send</button>
+                </div>
+                <div class="cppmessages"></div>
+               
+            </div>
+            <div class="javaroom hidden">
+                <div class="heading">Java</div>
+                <div class="javachatbox">
+                    <input type="text"> <button class="javabtn">Send</button>
+                </div>
+                <div class="javamessages"></div>
+            </div>
+            <div class="pythonroom hidden">
+                <div class="heading">Python</div>
+                <div class="pythonchatbox">
+                    <input type="text"> <button class="javabtn">Send</button>
+                </div>
+                <div class="pythonmessages"></div>
+            </div>
+
+
+        </div>
+    
     </div>
 
     <div class="messageBox">
-        
+
     </div>
+
 
     <div class="logs"></div>
 

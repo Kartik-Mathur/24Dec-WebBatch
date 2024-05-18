@@ -27,12 +27,27 @@ io.on('connection',(socket)=>{
         })
     })
 
+    socket.on('disconnect',(socket)=>{
+        io.emit('userleft',{
+            msg: `${idMap[socket.id]} has left the chat`
+        })
+    })
+
     socket.on('enterapp',({userName})=>{
         console.log(userName,"has entered the app");
         idMap[socket.id] = userName;
         socket.broadcast.emit('personin',{
             msg: `${userName} has joined the chat`
         });
+    })
+
+
+    socket.on('joincpp',()=>{
+        console.log("Joining cpp");
+        socket.join('cpp');
+        socket.to('cpp').emit("cppmsg",{
+            msg: `${idMap[socket.id]} has joined cpp group`
+        })
     })
 })
 

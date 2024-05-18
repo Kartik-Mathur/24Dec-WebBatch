@@ -31,3 +31,8 @@ socket.on('messageRecieved',({msg,user})=>{
     li.innerText = `${user} : ${msg}`;
     messageBox.appendChild(li);
 })
+
+// socket.on('userleft',({msg})=>{
+//     console.log("User has left");
+//     logs.innerHTML = `<li>${msg}</li>` + logs.innerHTML;
+// })
