@@ -1,0 +1,18 @@
+.movieCard{
+    /* height: 200px; */
+    width: 400px;
+    border: 1px solid black;
+}
+
+.movieCards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.imageList{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
