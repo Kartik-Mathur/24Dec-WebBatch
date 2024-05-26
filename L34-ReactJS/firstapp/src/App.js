@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import MovieList from './components/movieList/MovieList';
+import Input from './components/readingInput/Input';
 
 function App() {
   return (
@@ -11,8 +12,8 @@ function App() {
       <div>
         Learning our reactJS
       </div>
-
-      <MovieList />
+      <Input />
+      {/* <MovieList /> */}
     </div>
   );
 }

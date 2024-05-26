@@ -1,0 +1,28 @@
+.todoItem{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+.button{
+    border: 0px;
+    padding: 5px;
+    background-color: purple;
+    color: white;
+    font-size: 20px;
+    margin: 2px;
+    width: 30px;
+    height: 30px;
+}
+
+.todoText{
+    padding: 5px;
+    font-size: 20px;
+}
+
+.btnGroup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
