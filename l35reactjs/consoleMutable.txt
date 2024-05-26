@@ -1,0 +1,20 @@
+let arr = [1,2,3,4,5,6,7,8,9,10]
+undefined
+newArr = arr
+(10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+newArr.unshift(100)
+11
+arr
+(11) [100, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+Immutable code:
+let arr = [1,2,3,4,5,6,7,8,9,10]
+undefined
+let newArr = [100,90, ...arr]
+undefined
+newArr
+(12) [100, 90, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+arr
+(10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+- Arr don't change its value this time
