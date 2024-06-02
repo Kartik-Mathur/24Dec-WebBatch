@@ -11,7 +11,7 @@ const CatFacts = () => {
         fetch('https://cat-fact.herokuapp.com/facts')
         .then(res=>res.json())
         .then((res)=>{
-            console.log(res)
+            console.log(res)    
             setFacts(res)
         }).catch((err)=>{
             console.log(err)
