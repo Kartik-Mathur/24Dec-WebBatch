@@ -1,0 +1,10 @@
+.menu-nav{
+    display: flex;   
+    justify-content: space-around;
+}
+
+.menu-navlink,
+.menu-navlink:visited{
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,12 @@
+.food-container{
+    min-height: 300px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.food-container-item{
+    width: 45%;
+    border: 1px solid rebeccapurple;
+}
