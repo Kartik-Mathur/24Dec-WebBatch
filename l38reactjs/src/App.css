@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin-top: 20px;
+}
+
+.active{
+    color: blue;
+    font-weight: 800;
+}

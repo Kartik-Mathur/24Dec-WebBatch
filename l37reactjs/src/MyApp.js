@@ -22,17 +22,17 @@ function App() {
 //   const [password, setPassword] = useState('');
 //   const [validEmail, setValidEmail] = useState(true);
 //   const [validPassword, setValidPassword] = useState(true);
-  const [isValidForm, setIsValidForm] = useState(false);
+  const [isValidForm, setIsValidForm] = useState(null);
 
   const [email, dispatchEmail] = useReducer(emailReducer,{
     value: '',
-    isValid: true
+    isValid: null
   })
 
 
   const [password, dispatchPassword] = useReducer(passwordReducer,{
     value: '',
-    isValid: true
+    isValid: null
   });
 
   
@@ -57,6 +57,9 @@ function App() {
     // setIsValidForm(
     //   validEmail && validPassword
     // )
+    setIsValidForm(
+        password.isValid && email.isValid
+      )
   }
 
   const passwordChangeHandler = (ev) => {
@@ -66,13 +69,17 @@ function App() {
         type: 'USER_INPUT'
     })
 
-    // setIsValidForm(
-    //   validEmail && validPassword
-    // )
+    setIsValidForm(
+      password.isValid && email.isValid
+    )
   }
 
   const validateEmailHandler = () => {
     // setValidEmail(email.includes('@'));
+    dispatchEmail({
+        value:ev.target.value,
+        type: 'USER_INPUT'
+    })
   }
 
   const validatePasswordHandler = () => {
