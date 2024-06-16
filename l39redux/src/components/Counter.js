@@ -4,14 +4,14 @@ import { decrementCounter, incrementCounter } from '../actions/counterAction';
 
 
 const Counter = () => {
+    const stateValue = useSelector(state => state.counterReducer);
     const dispatch = useDispatch();
-    const stateValue = useSelector(state => state);
 
     return (
         <div>
-            <button onClick={() => { dispatch(incrementCounter()) }}>+</button>
+            <button onClick={() => { dispatch(incrementCounter) }}>+</button>
             <h1>Counter : {stateValue}</h1>
-            <button onClick={() => { dispatch(decrementCounter()) }}>-</button>
+            <button onClick={() => { dispatch(decrementCounter) }}>-</button>
         </div>
     )
 }
