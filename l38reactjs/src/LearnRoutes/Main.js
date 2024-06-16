@@ -6,6 +6,7 @@ import About from './components/About'
 import Orders from './components/Orders'
 import Error from './components/Error'
 import Chinese from './components/Menu/Chinese'
+import NorthIndian from './components/Menu/NorthIndian';
 
 const Main = () => {
     return (
@@ -15,8 +16,10 @@ const Main = () => {
                 <Routes>
                     {/* Add routes here */}
                     <Route path='/home' element={<Home />}>
-                        <Route path='northindian'/>
+                        <Route index element={<Chinese />} />
+                        <Route path='northindian/:id' element={<NorthIndian />}/>
                         <Route path='italian'/>
+                        {/* <Route path='food/:id' element={<ProductInfo />}/> */}
                         <Route path='chinese' element={<Chinese />}/>
                     </Route>
                     <Route path='/about' element={<About />} />
