@@ -8,10 +8,17 @@ const User = require('./models/users');
 const jwt = require('jsonwebtoken');
 const cookie = require('cookie');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
+app.use(cors({
+    origin: ["http://localhost:3000", "http://localhost:4000"],
+    credentials: true
+}));
 
 app.use(cookieParser())
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
+
 
 app.post('/login', async (req, res, next) => {
     const { username, password } = req.body;
@@ -77,6 +84,27 @@ app.get('/user', async (req, res) => {
         _id: decoded.id
     })
     res.send({ decoded, user })
+})
+
+app.get('/verify', async (req, res) => {
+    const cookies = cookie.parse(req.headers.cookie || '');
+    try {
+        console.log(cookies.jwt);
+        const token = cookies.jwt;
+        const decoded = jwt.verify(token, 'asbjdbasbd babsdjhvasjhdvasjhvdjav');
+        const user = await User.find({
+            _id: decoded.id
+        })
+
+        res.send({
+            message: "Success",
+            user
+        })
+    } catch (err) {
+        res.send({
+            message: "Failed"
+        })
+    }
 })
 
 mongoose.connect('mongodb://127.0.0.1:27017/mydb')
