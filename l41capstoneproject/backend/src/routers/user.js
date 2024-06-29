@@ -1,6 +1,10 @@
 import express from "express";
 import { postSignup } from "../controllers/user.js";
+// import multer from "multer";
 import upload from "../middlewares/multer.js";
+// import datauri from "datauri";
+
+// const upload = multer({});
 
 const router = express.Router();
 
