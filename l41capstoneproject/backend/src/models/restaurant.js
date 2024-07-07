@@ -3,6 +3,11 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const restaurantSchema = new Schema({
+    ownerId: {
+        type: mongoose.Types.ObjectId,
+        required: true,
+        ref: "User"
+    },
     name: {
         type: "String",
         lowercase: true
@@ -12,10 +17,24 @@ const restaurantSchema = new Schema({
         lowercase: true,
         unique: true,
     },
+    email: {
+        type: "String",
+        lowercase: true,
+        unique: true,
+        required: true
+    },
+    contact: {
+        type: "String",
+        unique: true,
+        required: true
+    },
     rating: Number,
     cusines: [
         {
-            category: String,
+            category: {
+                type: "String",
+                lowercase: true
+            },
             food: [
                 {
                     name: String,
@@ -31,6 +50,10 @@ const restaurantSchema = new Schema({
             ]
         }
     ],
+    coverImage: {
+        type: "String",
+        required: true
+    },
     cusineCategories: [
         {
             name: String
@@ -61,7 +84,11 @@ const restaurantSchema = new Schema({
             },
             name: String
         }
-    ]
+    ],
+    restaurantStatus: {
+        type: Boolean,
+        default: false
+    }
 }, {
     timestamps: true
 });

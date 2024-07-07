@@ -70,8 +70,6 @@ export const postSignup = responseHandler(async (req, res, next) => {
 
 
 
-
-
 export const postLogin = responseHandler(async (req, res, next) => {
     const { username, password, email } = req.body;
     try {
@@ -85,16 +83,16 @@ export const postLogin = responseHandler(async (req, res, next) => {
         if (!existingUser) {
             throw new ErrorHandler(400, "Please provide correct username or email");
         }
-        
+
         const isMatch = await bcrypt.compare(password, existingUser.password);
-        
+
         if (!isMatch) {
             throw new ErrorHandler(400, "Incorrect password");
         }
 
         const { accessToken, refreshToken } = await generateAccessTokenAndRefereshToken(existingUser._id);
-        console.log(refreshToken);
-        console.log(accessToken);
+        // console.log(refreshToken);
+        // console.log(accessToken);
         const options = {
             httpOnly: true
         }
@@ -113,6 +111,6 @@ export const postLogin = responseHandler(async (req, res, next) => {
             })
 
     } catch (error) {
-
+        throw new ErrorHandler(500, "Not able to login right now!");
     }
 })

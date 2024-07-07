@@ -75,7 +75,7 @@ userSchema.pre('save', function (next) {
 
 
 
-userSchema.methods.generateRefreshToken = async function(){
+userSchema.methods.generateRefreshToken = async function () {
     return jwt.sign(
         {
             userId: this._id
@@ -87,13 +87,13 @@ userSchema.methods.generateRefreshToken = async function(){
         });
 }
 
-userSchema.methods.generateAccessToken = async function() {
+userSchema.methods.generateAccessToken = async function () {
     return jwt.sign(
         {
             userId: this._id,
             email: this.email,
             username: this.username,
-            fullName: this.fullName
+            name: this.name
         },
         process.env.ACCESS_TOKEN_KEY
         ,
