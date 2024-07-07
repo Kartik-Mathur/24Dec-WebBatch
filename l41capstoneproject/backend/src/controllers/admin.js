@@ -82,7 +82,7 @@ export const postCusineCategoryAdd = responseHandler(async (req, res, next) => {
         newCusineCategories = newCusineCategories.map(c => c.trim().toLowerCase());
 
         if (!newCusineCategories.length) throw new ErrorHandler(400, "Please provide the valid categories to add");
-        
+
         let existingCusines = restaurant.cusines;
         if (existingCusines.length) {
             let newCusines = newCusineCategories.filter((cusine) => {
@@ -116,4 +116,63 @@ export const postCusineCategoryAdd = responseHandler(async (req, res, next) => {
     } catch (error) {
         throw new ErrorHandler(500, "Not able to add cusine category right now!");
     }
+})
+
+
+
+
+
+export const postDeleteCusineCategory = responseHandler(async (req, res, next) => {
+    const { categories, restaurant_name } = req.body;
+
+    try {
+        let restaurant = await Restaurant.findOne({
+            $and: [
+                { ownerId: req.user.userId },
+                { name: restaurant_name }
+            ]
+        });
+        if (!restaurant) {
+            throw new ErrorHandler(401, "Cusine category can't be added, Owner or Restaurant not found");
+        }
+
+        let cusineCategories = categories.split(',');
+        cusineCategories = cusineCategories.map(c => c.trim().toLowerCase());
+        
+        if (!cusineCategories.length) throw new ErrorHandler(400, "Please provide the valid categories to delete");
+
+        let existingCusines = restaurant.cusines;
+        if (existingCusines.length) {
+            let newCusines = existingCusines.filter((cusine) => {
+                for (let i = 0; i < cusineCategories.length; i++) {
+                    if (cusineCategories[i] == cusine.category) return false;
+                }
+                return true;
+            });
+            cusineCategories = newCusines;
+        }
+
+        if (cusineCategories.length) {
+            restaurant.cusines = cusineCategories;
+            restaurant.save();
+        }
+        res.status(200).json({
+            message: "Categories deleted successfully!",
+            data: restaurant
+        });
+
+    } catch (error) {
+        throw new ErrorHandler(500, "Not able to delete cusine category right now!");
+    }
+})
+
+
+
+
+
+
+
+
+export const postAddFood = responseHandler(async(req,res,next)=>{
+    
 })
