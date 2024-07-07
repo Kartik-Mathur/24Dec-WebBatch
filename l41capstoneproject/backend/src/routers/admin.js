@@ -9,7 +9,7 @@ import { postCusineCategoryAdd, postRestaurant } from "../controllers/admin.js";
 const router = express.Router();
 router.post('/register', upload.single('coverImage'), postRestaurant);
 router.post('/add-cusine-category', postCusineCategoryAdd);
-
+router.post('/delete-cusine-category', postDeleteCusineCategory);
 
 
 
