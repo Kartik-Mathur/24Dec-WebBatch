@@ -189,7 +189,7 @@ export const postAddFood = responseHandler(async (req, res, next) => {
             throw new ErrorHandler(401, "Cannot add food, Restaurant does not have this category");
         }
         const response = await uploadBatchOnCloudinary(req.files);
-        
+
         const imageUrl = [];
         for (let i = 0; i < response.length; i++) {
             imageUrl.push({
@@ -211,5 +211,84 @@ export const postAddFood = responseHandler(async (req, res, next) => {
         })
     } catch (error) {
         throw new ErrorHandler(error.statusCode || 500, "Cannot add food right now!");
+    }
+})
+
+
+
+
+
+export const postUpdateFoodItem = responseHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { name, price, veg, description, category, restaurant_name } = req.body;
+    try {
+        console.log(restaurant_name)
+        let restaurant = await Restaurant.findOne({ name: restaurant_name });
+        console.log(restaurant);
+        if (!restaurant) {
+            throw new ErrorHandler(401, "Cannot add food, Restaurant not found");
+        }
+        if (restaurant.ownerId.toString() !== req.user.userId.toString()) {
+            throw new ErrorHandler(401, "You are not authorised to add food to this restaurant");
+        }
+
+        const index = restaurant["cusines"].findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(401, "Cannot add food, Restaurant does not have this category");
+        }
+
+        const foodIndex = restaurant["cusines"][index]["food"].findIndex((food) => food._id.toString() === id.toString());
+        if (foodIndex == -1) {
+            throw new ErrorHandler(401, "Cannot add food, Restaurant does not have this food");
+        }
+
+        if (name) restaurant["cusines"][index]["food"][foodIndex].name = name;
+        if (price) restaurant["cusines"][index]["food"][foodIndex].price = price;
+        if (veg) restaurant["cusines"][index]["food"][foodIndex].veg = veg;
+        if (description) restaurant["cusines"][index]["food"][foodIndex].description = description;
+        await restaurant.save();
+        res.status(200).json({
+            message: "Food updated successfully",
+            data: restaurant
+        })
+
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, (error.message || "Cannot update food right now!"));
+    }
+
+})
+
+
+
+
+export const postDeleteFoodItem = responseHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { category, restaurant_name } = req.query;
+    try {
+        let restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(401, "Cannot delete food, Restaurant not found");
+        }
+        if (restaurant.ownerId.toString() !== req.user.userId.toString()) {
+            throw new ErrorHandler(401, "You are not authorised to delete food from this restaurant");
+        }
+        const index = restaurant["cusines"].findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(401, "Cannot delete food, Restaurant does not have this category");
+        }
+        const foodIndex = restaurant["cusines"][index]["food"].findIndex((food) =>
+            food._id.toString() === id.toString());
+        if (foodIndex == -1) {
+            throw new ErrorHandler(401, "Cannot delete food, Restaurant does not have this food");
+        }
+        restaurant["cusines"][index]["food"].splice(foodIndex, 1);
+        await restaurant.save();
+        res.status(200).json({
+            message: "Food deleted successfully",
+            data: restaurant
+        })
+    }
+    catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, (error.message || "Cannot update food right now!"));
     }
 })
