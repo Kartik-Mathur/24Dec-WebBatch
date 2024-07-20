@@ -1,5 +1,5 @@
 import express from "express";
-import { postSignup, postLogin } from "../controllers/user.js";
+import { postSignup, postLogin } from "../controllers/login.js";
 // import multer from "multer";
 import upload from "../middlewares/multer.js";
 // import datauri from "datauri";

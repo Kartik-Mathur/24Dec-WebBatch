@@ -292,3 +292,73 @@ export const postDeleteFoodItem = responseHandler(async (req, res, next) => {
         throw new ErrorHandler(error.statusCode || 500, (error.message || "Cannot update food right now!"));
     }
 })
+
+
+
+
+export const getAllFoodItems = responseHandler(async (req, res, next) => {
+    const { restaurant_name, category } = req.query;
+    try {
+        let restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(401, "Cannot get food, Restaurant not found");
+        }
+        const index = restaurant["cusines"].findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(401, "Cannot get food, Restaurant does not have this category");
+        }
+        res.status(200).json({
+            message: "Food fetched successfully",
+            data: restaurant["cusines"][index]["food"]
+        })
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, (error.message || "Cannot update food right now!"));
+    }
+})
+
+
+
+
+export const getFoodItem = responseHandler(async (req, res, next) => {
+    const { food_id } = req.params;
+    const { restaurant_name, category } = req.query;
+    try {
+        let restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(401, "Cannot get food, Restaurant not found");
+        }
+        const index = restaurant["cusines"].findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(401, "Cannot get food, Restaurant does not have this category");
+        }
+        const food = restaurant["cusines"][index]["food"].find((item) => item.id.toString() === food_id.toString());
+        if (!food) {
+            throw new ErrorHandler(401, "Cannot get food, Food not found");
+        }
+        res.status(200).json({
+            message: "Food fetched successfully",
+            data: food
+        })
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, (error.message || "Cannot update food right now!"));
+    }
+
+})
+
+
+export const getAllCusines = responseHandler(async (req, res, next) => {
+    const { restaurant_name } = req.query;
+    try {
+        let restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(401, "Cannot get cusines, Restaurant not found");
+        }
+        res.status(200).json({
+            message: "Cusines fetched successfully",
+            data: restaurant["cusines"]
+        })
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, (error.message || "Cannot update food right now!"));
+
+    }
+})

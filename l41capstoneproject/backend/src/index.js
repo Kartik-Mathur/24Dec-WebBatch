@@ -22,6 +22,7 @@ app.use(cookieParser());
 
 app.use('/', userRouter);
 app.use('/restaurant', verifyJWT, restaurantRouter);
+app.use('/app', verifyJWT, userRouter);
 
 
 mongoose.connect(`${process.env.DB_PATH}/${process.env.DB_NAME}`)
