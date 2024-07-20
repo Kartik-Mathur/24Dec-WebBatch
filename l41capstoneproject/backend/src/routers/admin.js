@@ -31,4 +31,4 @@ router.get('/get-food-items', getAllFoodItems);
 router.get('/get-food-item/:food_id', getFoodItem);
 router.get('/get-all-cusines', getAllCusines);
 
-export default router;
+ export default router;

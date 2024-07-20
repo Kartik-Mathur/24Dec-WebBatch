@@ -3,9 +3,11 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
-import userRouter from './routers/login.js';
+import loginRouter from './routers/login.js';
 import restaurantRouter from "./routers/admin.js";
 import { verifyJWT } from "./utils/verifyJWT.js";
+import userRouter from "./routers/user.js";
+
 const app = express();
 const PORT = process.env.PORT;
 
@@ -20,7 +22,7 @@ app.use(express.static('public')); // To store the information that front end mi
 app.use(cookieParser());
 
 
-app.use('/', userRouter);
+app.use('/', loginRouter);
 app.use('/restaurant', verifyJWT, restaurantRouter);
 app.use('/app', verifyJWT, userRouter);
 
