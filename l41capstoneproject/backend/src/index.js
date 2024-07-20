@@ -3,7 +3,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import bodyParser from "body-parser";
-import userRouter from './routers/user.js';
+import userRouter from './routers/login.js';
 import restaurantRouter from "./routers/admin.js";
 import { verifyJWT } from "./utils/verifyJWT.js";
 const app = express();

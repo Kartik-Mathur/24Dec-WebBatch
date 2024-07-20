@@ -11,8 +11,8 @@ router.post('/register', upload.single('coverImage'), postRestaurant);
 router.post('/add-cusine-category', postCusineCategoryAdd);
 router.post('/delete-cusine-category', postDeleteCusineCategory);
 router.post(
-    '/add-food',
-    upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'foodimage', maxCount: 8 }]),
+    '/add-food-item',
+    upload.array('image', 12),
     postAddFood);
 
 

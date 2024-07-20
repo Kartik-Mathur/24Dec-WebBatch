@@ -1,6 +1,4 @@
-import path from "path";
 import ErrorHandler from "../utils/ErrorHandler.js";
-import DatauriParser from "datauri/parser.js";
 import uploadOnCloudinary from "../utils/uploadOnCloudinary.js";
 import User from "../models/user.js";
 import { responseHandler } from "../utils/responseHandler.js";
@@ -114,3 +112,5 @@ export const postLogin = responseHandler(async (req, res, next) => {
         throw new ErrorHandler(500, "Not able to login right now!");
     }
 })
+
+

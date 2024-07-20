@@ -1,7 +1,7 @@
 import Restaurant from "../models/restaurant.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import { responseHandler } from "../utils/responseHandler.js";
-import uploadOnCloudinary from "../utils/uploadOnCloudinary.js";
+import uploadOnCloudinary, { uploadBatchOnCloudinary } from "../utils/uploadOnCloudinary.js";
 
 export const postRestaurant = responseHandler(async (req, res, next) => {
     const { name, address, email, contact } = req.body;
@@ -138,7 +138,7 @@ export const postDeleteCusineCategory = responseHandler(async (req, res, next) =
 
         let cusineCategories = categories.split(',');
         cusineCategories = cusineCategories.map(c => c.trim().toLowerCase());
-        
+
         if (!cusineCategories.length) throw new ErrorHandler(400, "Please provide the valid categories to delete");
 
         let existingCusines = restaurant.cusines;
@@ -173,6 +173,43 @@ export const postDeleteCusineCategory = responseHandler(async (req, res, next) =
 
 
 
-export const postAddFood = responseHandler(async(req,res,next)=>{
-    
+export const postAddFood = responseHandler(async (req, res, next) => {
+    const { name, price, veg, description, category, restaurant_name } = req.body;
+    try {
+        let restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(401, "Cannot add food, Restaurant not found");
+        }
+        if (restaurant.ownerId.toString() !== req.user.userId.toString()) {
+            throw new ErrorHandler(401, "You are not authorised to add food to this restaurant");
+        }
+
+        const index = restaurant["cusines"].findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(401, "Cannot add food, Restaurant does not have this category");
+        }
+        const response = await uploadBatchOnCloudinary(req.files);
+        
+        const imageUrl = [];
+        for (let i = 0; i < response.length; i++) {
+            imageUrl.push({
+                "url": response[i].url
+            });
+        }
+        // console.log(imageUrl);
+        restaurant["cusines"][index]["food"].push({
+            name,
+            price,
+            veg,
+            description,
+            images: imageUrl
+        })
+        await restaurant.save();
+        res.status(200).json({
+            message: "Food added successfully",
+            data: restaurant
+        })
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, "Cannot add food right now!");
+    }
 })

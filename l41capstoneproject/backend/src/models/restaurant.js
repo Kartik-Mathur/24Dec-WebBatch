@@ -40,7 +40,7 @@ const restaurantSchema = new Schema({
                     name: String,
                     price: Number,
                     description: String,
-                    type: String,
+                    veg: String, // veg, non-veg
                     images: [
                         {
                             url: String
