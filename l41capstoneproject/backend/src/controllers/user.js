@@ -95,7 +95,7 @@ export const getDeleteReview = responseHandler(async (req, res, next) => {
     const { reviewId } = req.params;
     const { restaurant_name } = req.query;
     const { userId } = req.user;
-    
+
     try {
         const restaurant = await Restaurant.findOne({ name: restaurant_name });
         if (!restaurant) {
@@ -121,3 +121,58 @@ export const getDeleteReview = responseHandler(async (req, res, next) => {
     }
 
 })
+
+
+export const getAllReviews = responseHandler(async (req, res, next) => {
+    const { restaurant_name } = req.query;
+
+    try {
+        const restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(404, "Restaurant not found to update the review");
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Reviews fetched successfully",
+            reviews: restaurant["reviews"],
+        });
+
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})
+
+
+
+
+
+
+export const getReview = responseHandler(async (req, res, next) => {
+    const { reviewId } = req.params;
+    const { restaurant_name } = req.query;
+
+    try {
+        const restaurant = await Restaurant.findOne({ name: restaurant_name });
+        if (!restaurant) {
+            throw new ErrorHandler(404, "Restaurant not found to update the review");
+        }
+        const index = restaurant["reviews"].findIndex(r => r._id.toString() == reviewId.toString());
+        if (index === -1) {
+            throw new ErrorHandler(404, "Review not found, that you are trying to update");
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Review fetched successfully",
+            review: restaurant["reviews"][index]
+        });
+
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})
+
+
+
+

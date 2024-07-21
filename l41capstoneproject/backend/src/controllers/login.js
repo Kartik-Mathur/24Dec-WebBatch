@@ -70,6 +70,7 @@ export const postSignup = responseHandler(async (req, res, next) => {
 
 export const postLogin = responseHandler(async (req, res, next) => {
     const { username, password, email } = req.body;
+
     try {
         let existingUser = await User.findOne({
             $or: [
@@ -77,20 +78,18 @@ export const postLogin = responseHandler(async (req, res, next) => {
                 { email }
             ]
         });
-
+        console.log(existingUser);
         if (!existingUser) {
             throw new ErrorHandler(400, "Please provide correct username or email");
         }
 
         const isMatch = await bcrypt.compare(password, existingUser.password);
-
+        console.log(isMatch)
         if (!isMatch) {
             throw new ErrorHandler(400, "Incorrect password");
         }
 
         const { accessToken, refreshToken } = await generateAccessTokenAndRefereshToken(existingUser._id);
-        // console.log(refreshToken);
-        // console.log(accessToken);
         const options = {
             httpOnly: true
         }
@@ -109,7 +108,7 @@ export const postLogin = responseHandler(async (req, res, next) => {
             })
 
     } catch (error) {
-        throw new ErrorHandler(500, "Not able to login right now!");
+        throw new ErrorHandler(error.statusCode || 500, error.message || "Not able to login right now!");
     }
 })
 
