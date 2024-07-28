@@ -9,7 +9,6 @@ function restaurantReducer(state = { initialState }, action) {
         default:
             return state;
     }
-
 }
 
 export default restaurantReducer;

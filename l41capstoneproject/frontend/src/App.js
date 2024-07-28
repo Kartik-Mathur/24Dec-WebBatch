@@ -5,6 +5,7 @@ import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Restaurants from './components/Restaurants';
 import Restaurant from './components/Restaurant';
+import RestaurantFood from './components/RestaurantFood';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='app' element={<Home />}>
-          <Route path=':restaurant_id' element={<Restaurant />} />
+          <Route path=':restaurant_id' element={<Restaurant />}>
+            <Route path=':category' element={<RestaurantFood />} />
+          </Route>
         </Route>
       </Routes>
     </div>

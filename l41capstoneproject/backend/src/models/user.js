@@ -46,6 +46,12 @@ const userSchema = new Schema({
             ]
         }
     ],
+    cart: [
+        {
+            food: Object,
+            quantity: Number
+        }
+    ],
     password: {
         type: String,
         required: true

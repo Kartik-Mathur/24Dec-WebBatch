@@ -227,3 +227,26 @@ export const getRestaurant = responseHandler(async (req, res, next) => {
         throw new ErrorHandler(error.statusCode || 500, error.message);
     }
 })
+
+
+
+export const getAllFoodItems = responseHandler(async (req, res, next) => {
+    let {restaurant_id} = req.params;
+    const { category } = req.query;
+    try {
+        let restaurant = await Restaurant.findOne({ _id: restaurant_id });
+        if (!restaurant) {
+            throw new ErrorHandler(401, "Cannot get food, Restaurant not found");
+        }
+        const index = restaurant["cusines"].findIndex((item) => item.category === category);
+        if (index == -1) {
+            throw new ErrorHandler(401, "Cannot get food, Restaurant does not have this category");
+        }
+        res.status(200).json({
+            message: "Food fetched successfully",
+            data: restaurant["cusines"][index]["food"]
+        })
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, (error.message || "Cannot update food right now!"));
+    }
+})
