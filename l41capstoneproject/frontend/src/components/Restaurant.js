@@ -1,16 +1,25 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import axios from "../utils/axios";
 
-const Restaurant = ({ restaurant }) => {
-    console.log(restaurant);
-    let cusinesAvailable = (restaurant?.cusines?.length > 0);
-    
+const Restaurant = () => {
+    const { restaurant_id } = useParams();
+    const [restaurant, setRestaurant] = React.useState({});
+
+    useEffect(() => {
+        const getRestaurantData = async () => {
+            let { data } = await axios.get(`/app/all/${restaurant_id}`);
+            setRestaurant(data.restaurant);
+        }
+        getRestaurantData();
+    }, [restaurant_id]);
+
     return (
-        <div className='restaurant-menu'>
-            <div className='restaurant-cusines'>
-                {cusinesAvailable && restaurant.cusines.map((item) => <Link>{item.category}</Link>)}
-                {!cusinesAvailable && <div>No Cusines Available!</div>}
+        <div className='restaurant-cusines'>
+            <div className='cusines-categories'>
+                {restaurant?.cusines?.length > 0 && restaurant.cusines.map((item) => <Link to={}>{item.category}</Link>)}
             </div>
+            {restaurant?.cusines?.length <= 0 && <div>No Cusines Available!</div>}
         </div>
     )
 }

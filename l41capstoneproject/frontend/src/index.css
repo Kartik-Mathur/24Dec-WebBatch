@@ -12,16 +12,21 @@
 
 .restaurant-names{
   width: 20%;
-}
-.restaurant-names button{
-  width: 100%;
-  margin: 5px 0;
-}
-.restaurant-menu{
-  width: 70%;
+
+  display: inline-block;
+  /* justify-content: space-around; */
 }
 
 .restaurant-cusines{
+  width: 70%;
+  display: inline-block;
+}
+.restaurant-names button{
+  margin: 5px 0;
+  display: block;
+}
+
+.cusines-categories{
   display: flex;
   justify-content: space-around;
 }
