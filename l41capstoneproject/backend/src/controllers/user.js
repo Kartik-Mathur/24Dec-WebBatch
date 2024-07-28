@@ -2,11 +2,12 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 import Restaurant from "../models/restaurant.js";
 import { responseHandler } from "../utils/responseHandler.js";
 import { uploadBatchOnCloudinary } from "../utils/uploadOnCloudinary.js";
+import { resolve } from "path/win32";
 
 export const postAddReview = responseHandler(async (req, res, next) => {
     const { restaurant_name, rating, message } = req.body;
     const { userId, name } = req.user;
-
+    console.log(restaurant_name, rating, message, userId, name);
     try {
         const restaurant = await Restaurant.findOne({ name: restaurant_name });
         if (!restaurant) {
@@ -176,3 +177,53 @@ export const getReview = responseHandler(async (req, res, next) => {
 
 
 
+
+async function giveDelay() {
+    return new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            resolve();
+        }, 1000);
+    })
+}
+
+
+export const getRestaurants = responseHandler(async (req, res, next) => {
+    try {
+        const restaurants = await Restaurant.find({});
+
+
+        if (!restaurants) {
+            throw new ErrorHandler(404, "No Restaurants found!");
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Restaurants fetched successfully",
+            restaurants
+        });
+
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})
+
+
+
+export const getRestaurant = responseHandler(async (req, res, next) => {
+    const {restaurant_id} = req.params;
+    try {
+        const restaurant = await Restaurant.findOne({_id: restaurant_id});
+        if (!restaurant) {
+            throw new ErrorHandler(404, "No Restaurants found!");
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Restaurant fetched successfully",
+            restaurant
+        });
+
+    } catch (error) {
+        throw new ErrorHandler(error.statusCode || 500, error.message);
+    }
+})

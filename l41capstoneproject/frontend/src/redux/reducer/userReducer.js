@@ -3,7 +3,8 @@ const initialState = {
     email: '',
     username: "",
     image: '',
-    orderHistory: []
+    orderHistory: [],
+    isLoggedIn: false
 };
 
 function userReducer(state = { initialState }, action) {
@@ -15,7 +16,8 @@ function userReducer(state = { initialState }, action) {
                 email: action.payload.email,
                 username: action.payload.username,
                 image: action.payload.image,
-                orderHistory: action.payload.orderHistory
+                orderHistory: action.payload.orderHistory,
+                isLoggedIn: true
             }
         case 'GET_USER':
             return state;
