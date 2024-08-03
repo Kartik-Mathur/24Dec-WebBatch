@@ -1,10 +1,12 @@
 import axios from '../utils/axios';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function FoodItem({ food,category }) {
     const restaurant = useSelector(state => state.activeRestaurantReducer);
+    
+    const dispatch = useDispatch();
 
     const cartHandler = async () => {
         try {
@@ -14,7 +16,8 @@ function FoodItem({ food,category }) {
                 category,
                 quantity: 1
             });
-            console.log(data);
+            console.log(data.data);
+            dispatch({type:"UPDATE_USER_CART",payload: data.data});
         }
         catch (error) {
             alert(error.message);

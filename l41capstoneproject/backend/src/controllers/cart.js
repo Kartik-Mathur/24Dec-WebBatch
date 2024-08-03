@@ -12,19 +12,18 @@ export const getAddCart = responseHandler(async (req, res, next) => {
 
     try {
         const restaurant = await Restaurant.findOne({ name: restaurant_name });
-
+        
         if (!restaurant) {
             throw new ErrorHandler(401, `Restaurant with name ${restaurant_name} is not exists!`);
         }
 
         const { foodItem } = await restaurant.getFoodItem(category, id);
-
+        
         let cartItem = { food: foodItem, quantity };
-
-        const user = await User.findOne({ _id: req.user.userId });
-
+        const user = await User.findOne({ _id: req.user._id });
+        console.log(user);
         let existingFoodIndex = user.cart.findIndex(item => item.food._id.toString() === foodItem._id.toString());
-
+        
         if (existingFoodIndex === -1)
             user.cart.unshift(cartItem);
         else

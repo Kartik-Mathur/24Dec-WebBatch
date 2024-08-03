@@ -19,7 +19,7 @@ const Restaurant = () => {
     return (
         <div className='restaurant-cusines'>
             <div className='cusines-categories'>
-                {restaurant?.cusines?.length > 0 && restaurant.cusines.map((item,index) => <Link key={index} to={item.category}>{item.category}</Link>)}
+                {restaurant?.cusines?.length > 0 && restaurant.cusines.map((item,index) => <Link className='cusine-category-link' key={index} to={item.category}>{item.category}</Link>)}
             </div>
             {restaurant?.cusines?.length <= 0 && <div>No Cusines Available!</div>}
             <div>

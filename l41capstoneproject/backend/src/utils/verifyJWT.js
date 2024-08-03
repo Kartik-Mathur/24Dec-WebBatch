@@ -13,10 +13,12 @@ export const verifyJWT = responseHandler(async function (req, res, next) {
 
     try {
         const decoded = jwt.verify(incomingAccessToken, process.env.ACCESS_TOKEN_KEY);
-        req.user = decoded;
+        
         let user = await User.findOne({
             _id: decoded.userId,
         });
+        
+        req.user=user;
         if (!user || incomingRefreshToken !== user.refreshToken) {
             throw new ErrorHandler(401, "User not found, invalid token!");
         }

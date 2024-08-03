@@ -180,7 +180,7 @@ export const postAddFood = responseHandler(async (req, res, next) => {
         if (!restaurant) {
             throw new ErrorHandler(401, "Cannot add food, Restaurant not found");
         }
-        if (restaurant.ownerId.toString() !== req.user.userId.toString()) {
+        if (restaurant.ownerId.toString() !== req.user._id.toString()) {
             throw new ErrorHandler(401, "You are not authorised to add food to this restaurant");
         }
 
@@ -210,7 +210,7 @@ export const postAddFood = responseHandler(async (req, res, next) => {
             data: restaurant
         })
     } catch (error) {
-        throw new ErrorHandler(error.statusCode || 500, "Cannot add food right now!");
+        throw new ErrorHandler(error.statusCode || 500, error.message||"Cannot add food right now!");
     }
 })
 

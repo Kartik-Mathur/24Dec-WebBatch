@@ -23,6 +23,13 @@ app.use(cookieParser());
 
 
 app.use('/', loginRouter);
+app.get('/getuser', verifyJWT, (req, res, next) => {
+    if (req.user)
+        return res.status(200).json({user: req.user});
+    else
+        return res.status(401).json({ user: undefined });
+
+})
 app.use('/restaurant', verifyJWT, restaurantRouter);
 app.use('/app', verifyJWT, userRouter);
 

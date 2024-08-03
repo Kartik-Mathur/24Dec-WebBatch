@@ -98,7 +98,8 @@ userSchema.methods.generateAccessToken = async function () {
             userId: this._id,
             email: this.email,
             username: this.username,
-            name: this.name
+            name: this.name,
+            cart: this.cart
         },
         process.env.ACCESS_TOKEN_KEY
         ,
